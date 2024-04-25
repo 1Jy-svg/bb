@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="table-responsive">
+      <table class="order-table">
+          <thead>
+              <tr>
+                  <th>Order ID</th>
+                  <th>Sender Info</th>
+                  <th>Receiver Info</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let order of orders">
+                  <td>{{ order.orderId }}</td>
+                  <td>
+                      <div class="sub-column">
+                          <div><strong>Name:</strong> {{ order.sender.name }}</div>
+                          <div><strong>Address:</strong> {{ order.sender.address }}</div>
+                          <div><strong>Pincode:</strong> {{ order.sender.pincode }}</div>
+                          <div><strong>Email:</strong> {{ order.sender.email }}</div>
+                          <div><strong>Contact Number:</strong> {{ order.sender.contact }}</div>
+                      </div>
+                  </td>
+                  <td>
+                      <div class="sub-column">
+                          <div><strong>Name:</strong> {{ order.receiver.name }}</div>
+                          <div><strong>Address:</strong> {{ order.receiver.address }}</div>
+                          <div><strong>Pincode:</strong> {{ order.receiver.pincode }}</div>
+                          <div><strong>Email:</strong> {{ order.receiver.email }}</div>
+                          <div><strong>Contact Number:</strong> {{ order.receiver.contact }}</div>
+                      </div>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+</div>
