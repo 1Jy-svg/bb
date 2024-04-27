@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services</title>
+    <style>
+        /* Resetting defaults */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+          text-align: center;
+          margin-bottom: 40px;
+          color: #333;
+          text-transform: uppercase;
+          font-size: 36px; /* Increase font size */
+          font-weight: bold; /* Add font weight */
+          letter-spacing: 1px; /* Add letter spacing */
+           text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Add text shadow */
+}
+
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .card {
+            width: calc(25% - 40px);
+            margin: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-content h2 {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .card-content p {
+            color: #666;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>OUR SERVICES</h1>
+        <div class="card-container">
+            <!-- Card 1 -->
+            <div class="card">
+                <img src="../../assets/warehousing.jpeg" alt="Service 1">
+                <div class="card-content">
+                    <h2>Warehousing</h2>
+                    <p>Expressd’s network of fulfilment centres (warehouses) are powered by our proprietary software and optimally integrated with our shipping network giving you the flexibility to optimise your storage cost versus speed to delivery. </p>
+                </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="card">
+                <img src="../../assets/images.jpeg" alt="Service 2">
+                <div class="card-content">
+                    <h2>Fast Delivery</h2>
+                    <p>Expressd’s infrastructure and technology power our Express parcel service that caters to eCommerce marketplaces, D2C brands, omnichannel retailers, small and medium industries, large enterprises and consumers. </p>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="card">
+                <img src="../../assets/Untitled.jpeg" alt="Service 3">
+                <div class="card-content">
+                    <h2>Door to Door Delivery</h2>
+                    <p>ExpressD specializes in providing door-to-door delivery solutions. Our door-to-door services ensure that packages are picked up from the sender's location and delivered directly to the recipient's doorstep, offering convenience and peace of mind to our customers.</p>
+                </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="card">
+                <img src="../../assets/tracking.jpeg" alt="Service 4">
+                <div class="card-content">
+                    <h2>Tracking</h2>
+                    <p>ExpressD is a courier service company that offers tracking of shipments to its customers. With ExpressD's tracking service, customers can easily monitor the progress of their shipments from pickup to delivery</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

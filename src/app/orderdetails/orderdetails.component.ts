@@ -1,4 +1,4 @@
-import { Component, OnDestroy, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { UserService } from '../core/services/user.service';
@@ -6,24 +6,23 @@ import { IUser } from '../core/models/common.model';
 import { Subscription } from 'rxjs';
 import { DataService } from '../data.service';
 import { CommonModule } from '@angular/common';
-
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
 interface Order {
   orderId: string;
-  sender: {
-      name: string;
-      address: string;
-      pincode: string;
-      email: string;
-      contact: string;
-  };
-  receiver: {
-      name: string;
-      address: string;
-      pincode: string;
-      email: string;
-      contact: string;
-  };
+  senderName: string;
+  receiverName: string;
+  senderAddress:string;
+  senderPincode:string;
+  senderEmail:string;
+  senderContact:string;
+  receiverAddress:string;
+  receiverPincode:string;
+  receiverEmail:string;
+ 
+  // Add other properties as needed
 }
+
 @Component({
   selector: 'app-orderdetails',
   standalone: true,
@@ -31,57 +30,56 @@ interface Order {
   templateUrl: './orderdetails.component.html',
   styleUrl: './orderdetails.component.css'
 })
-export class OrderdetailsComponent implements OnDestroy{
-  data: any;
-  private subscription: Subscription;
-dataService=inject(DataService);
-  constructor() {
-    this.subscription = this.dataService.data$.subscribe(data => {
-      this.data = data;
-    });
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
-
-  orders: Order[] = [
-    { 
-        orderId: '123456',
-        sender: {
-            name: 'John Doe',
-            address: '123 Main St',
-            pincode: '123456',
-            email: 'john@example.com',
-            contact: '123-456-7890'
-        },
-        receiver: {
-            name: 'Jane Doe',
-            address: '456 Oak St',
-            pincode: '654321',
-            email: 'jane@example.com',
-            contact: '987-654-3210'
+export class OrderdetailsComponent implements OnInit{
+  currentUserUid: string | null = null;
+  orders: Order[] = [];
+  stat:string | null=null;
+  constructor(private afAuth: AngularFireAuth,private db:AngularFireDatabase){}
+ ngOnInit(): void {
+  this.afAuth.authState.subscribe((user:any) => {
+    if (user) {
+      // User is logged in, retrieve UID
+      this.currentUserUid = user.uid;
+    } else {
+      // User is not logged in, UID is null
+      this.currentUserUid = null;
+    }
+    console.log(this.currentUserUid);
+    this.db.list('userdetails').snapshotChanges().subscribe(snaps => {
+      this.orders = [];
+      snaps.forEach(snap => {
+        const key = snap.key;
+        const data: any = snap.payload.val();
+        if (data.user_uid === this.currentUserUid) {
+          console.log(key);
+          const order: Order = {
+            orderId: data.order_id,
+            senderName: data.sender_name,
+            receiverName: data.receiver_name,
+            senderAddress:data.sender_address,
+            senderPincode:data.pincode_sender,
+            senderEmail:data.sender_email,
+            senderContact:data.sender_contact,
+            receiverAddress:data.receiver_address,
+            receiverPincode:data.pincode_receiver,
+            receiverEmail:data.receiver_email,
+            
+            // Add other properties as needed
+          };
+          this.orders.push(order);
+          this.stat='yes';
         }
-    },
-    { 
-        orderId: '789012',
-        sender: {
-            name: 'Alice Smith',
-            address: '789 Elm St',
-            pincode: '456789',
-            email: 'alice@example.com',
-            contact: '456-789-1234'
-        },
-        receiver: {
-            name: 'Bob Smith',
-            address: '321 Maple St',
-            pincode: '987654',
-            email: 'bob@example.com',
-            contact: '654-321-0987'
-        }
-    },
-    // Add more orders as needed
-];
-}
+          // Order found, update step completion status
+        
+
+          })
+          //console.log(data.order_id);
+          
+    
+          });
+          
+        
+      });
+  }
   
-
+ }

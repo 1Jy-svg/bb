@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatIconModule } from '@angular/material/icon';
+import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
 export interface Step {
   label: string;
   completed: boolean;
@@ -8,7 +9,7 @@ export interface Step {
 @Component({
   selector: 'app-track',
   standalone: true,
-  imports: [MatStepperModule,MatIconModule],
+  imports: [MatStepperModule,MatIconModule,RouterModule,RouterLink,RouterOutlet],
   templateUrl: './track.component.html',
   styleUrl: './track.component.css'
 })
