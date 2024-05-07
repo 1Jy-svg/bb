@@ -6,6 +6,7 @@
     <title>About Us - Courier Service Management</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
+        /* Global Styles */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
@@ -13,16 +14,18 @@
             background-color: #f9f9f9;
             color: #333;
         }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        /* Header Styles */
         .expressd-header {
             background-color: #3498db;
             color: #fff;
             padding: 20px;
             text-align: center;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        .expressd-header a {
-            text-decoration: none;
-            color: #fff;
+            width: 100%; /* Set header to span full width */
         }
         .expressd-header h1 {
             font-size: 40px;
@@ -33,6 +36,7 @@
             margin: 5px 0 0;
             font-style: italic;
         }
+        /* About Section Styles */
         #resources {
             padding: 50px 0;
             background-color: #f9f9f9;
@@ -42,8 +46,9 @@
             margin-bottom: 50px;
         }
         .intro-section h2 {
-            font-size: 24px;
+            font-size: 28px;
             margin-bottom: 20px;
+            color: #333;
         }
         .intro-section p {
             font-size: 16px;
@@ -54,11 +59,12 @@
             border-color: #ddd;
             margin-top: 30px;
         }
+        /* Feature Section Styles */
         .feature-section {
             background-color: #fff;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
-            padding: 20px;
+            padding: 30px;
             transition: all 0.3s ease;
             text-align: center;
             margin-bottom: 20px;
@@ -68,15 +74,16 @@
             box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
         }
         .feature-section h4 {
+            font-size: 20px;
             font-weight: bold;
-            font-style: italic;
-            margin: 0 0 15px;
+            margin-bottom: 15px;
             color: #333;
         }
         .feature-section p {
             font-size: 16px;
             color: #666;
         }
+        /* Button Styles */
         .btn {
             display: inline-block;
             padding: 10px 20px;
@@ -87,6 +94,7 @@
             text-decoration: none;
             border-radius: 4px;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
         .btn:hover {
             background-color: #3498db;
@@ -97,7 +105,7 @@
 <body>
 
 <div class="expressd-header">
-    <a routerLink="/home"><i class="fas fa-home" style="font-size: 24px; margin-right: 10px;"></i></a>
+    <a href="/home"><i class="fas fa-home" style="font-size: 24px; margin-right: 10px;"></i></a>
     <h1>EXPRESSD</h1>
     <h3>Unleashing the power of delivery</h3>
 </div>
@@ -108,13 +116,6 @@
             <div class="intro-section">
                 <h2>About Expressd</h2>
                 <p>Expressd is a startup company dedicated to providing the best delivery solutions to businesses and individuals. We believe in simplifying the courier process while ensuring efficiency and reliability in every shipment. Our mission is to empower businesses and individuals with seamless logistics solutions, enabling them to focus on what matters most.</p>
-                <p>At Expressd, we are committed to:</p>
-                <ul>
-                    <li>Providing easy booking for multiple services</li>
-                    <li>Offering comprehensive shipment management tools</li>
-                    <li>Ensuring clear visibility throughout the shipping process</li>
-                    <li>Facilitating global expansion for businesses of all sizes</li>
-                </ul>
                 <hr>
             </div>
         </div>
